@@ -55,8 +55,8 @@ services:
       - TZ=${TZ}
       - WEBUI_PORT=8080 # must match "qbittorrent web interface" port number in gluetun's service above
     volumes:
-      - ./qbittorrent:/config
-      - /var/mnt/media:/mnt/media
+      - ./qbittorrent:/config:z
+      - /var/mnt/media:/mnt/media:z
     depends_on:
       gluetun:
         condition: service_healthy
@@ -91,7 +91,7 @@ services:
       - TZ=${TZ}
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./prowlarr:/config
+      - ./prowlarr:/config:z
     restart: unless-stopped
     depends_on:
       gluetun:
@@ -109,8 +109,8 @@ services:
       - TZ=${TZ}
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./sonarr:/config
-      - /var/mnt/media:/mnt/media
+      - ./sonarr:/config:z
+      - /var/mnt/media:/mnt/media:z
     ports:
       - 8989:8989
     networks:
@@ -127,8 +127,8 @@ services:
       - TZ=${TZ}
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./radarr:/config
-      - /var/mnt/media:/mnt/media
+      - ./radarr:/config:z
+      - /var/mnt/media:/mnt/media:z
     ports:
       - 7878:7878
     networks:
@@ -141,8 +141,8 @@ services:
     restart: unless-stopped
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./lidarr:/config
-      - /var/mnt/media:/mnt/media
+      - ./lidarr:/config:z
+      - /var/mnt/media:/mnt/media:z
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -163,8 +163,8 @@ services:
       - TZ=${TZ}
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - ./bazarr:/config
-      - /var/mnt/media:/mnt/media
+      - ./bazarr:/config:z
+      - /var/mnt/media:/mnt/media:z
     ports:
       - 6767:6767
     networks:
